@@ -78,7 +78,12 @@
   "scripts":{
     "helper:setupdb": "scripts/setupdb.sh",
     "helper:postcomposer": "scripts/post-composer-install.sh",
+    "typo3-cms-scripts": [
+			"typo3cms install:fixfolderstructure",
+			"typo3cms install:generatepackagestates"
+		],
     "post-autoload-dump": [
+      "@typo3-cms-scripts",
       "@helper:postcomposer"
     ]
   },
