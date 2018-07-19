@@ -1,6 +1,36 @@
-# t3kit [![t3kit](https://img.shields.io/badge/t3kit-8.7.0-blue.svg?style=flat-square)](https://github.com/t3kit/t3kit) [![TYPO3](https://img.shields.io/badge/TYPO3-8.7.16-orange.svg?style=flat-square)](https://typo3.org/)
+# t3kit [![t3kit](https://img.shields.io/badge/t3kit-9dev-blue.svg?style=flat-square)](https://github.com/t3kit/t3kit) [![TYPO3](https://img.shields.io/badge/TYPO3-9.3-orange.svg?style=flat-square)](https://typo3.org/)
 
 ## [Starter kit](http://t3kit.com/) for TYPO3 CMS. Tools, extensions, configurations and templates.
+
+# WIP/Test branch
+
+## !! Development branch - not for production!!
+
+This branch is made to make it possible to check what changes that needs to be done in theme_t3kit extension. Most of the extensions included in t3kit releases aren't included in this branch for now. Also note that there are still much more to fix for TYPO3 version 9.
+
+You can also use this branch if you need to test and prepare any extension for TYPO3 version 9.
+
+Frontend currently throws an error if you aren't logged into BE.
+see: https://forge.typo3.org/issues/85310
+
+To get this setup to run on first install:
+`composer install`
+
+Setup t3kit database (still for version 8):
+`composer helper:setupdb`
+
+Run `composer helper:postcomposer`
+
+Since Themes extension isn't included now, we need to do some manual configurations to make frontend render.
+
+Login to BE do following steps:
+
+ - Edit root template [1] and include static "Theme - t3kit (theme_t3kit)"
+ - Edit root page [1] and:
+    - Include Page TSConfig (from extensions) "Theme - t3kit (theme_t3kit)"
+    - Set "Startpage" as Backend Layout (this page only) 
+    - Set "MenuContent" as Backend Layout (subpages of this page).
+ - Change domain located on root page [1] from "localhost" to "localhost:8888"
 
 
 
@@ -13,7 +43,6 @@
 * [t3kit versioning](#t3kit-versioning)
 * [CHANGELOG](https://github.com/t3kit/t3kit/blob/master/CHANGELOG.md)
 * [Contributing to t3kit](https://github.com/t3kit/t3kit/blob/master/CONTRIBUTING.md)
-* [t3kit v7](#t3kit-v7-on-branch-t3kit7)
 
 
 ***
@@ -44,13 +73,13 @@ _*Note: To continue with Docker you need to create docker environment `.env` fil
 
 5. `docker-compose up -d`
 
-6. `docker exec -it web /var/www/html/vendor/t3kit/db/setupdb.sh`
+6. `docker exec -it WEB_CONTAINER_NAME /var/www/html/vendor/t3kit/db/setupdb.sh`
 
 ***
 
 ### Start using t3kit with **composer**:
 
-1. `composer create-project t3kit/t3kit t3kit dev-master --keep-vcs --ignore-platform-reqs`
+1. `composer create-project t3kit/t3kit WEB_CONTAINER_NAME dev-master --keep-vcs --ignore-platform-reqs`
 
 2. `cd t3kit`
 
@@ -60,14 +89,14 @@ _*Note: To continue with Docker you need to create docker environment `.env` fil
 
 4. `docker-compose up -d`
 
-5. `docker exec -it web /var/www/html/vendor/t3kit/db/setupdb.sh`
+5. `composer helper:setupdb`
 
 
 ### t3kit database manipulation - Setup/Restore/Pack:
 
-* Setup t3kit db: `docker exec -it web /var/www/html/vendor/t3kit/db/setupdb.sh`
-* Restore t3kit db: `docker exec -it web /var/www/html/vendor/t3kit/db/restoredb.sh`
-* Pack (save) t3kit db: `docker exec -it web /var/www/html/vendor/t3kit/db/packdb.sh`
+* Setup t3kit db: `docker exec -it WEB_CONTAINER_NAME /var/www/html/vendor/t3kit/db/setupdb.sh`
+* Restore t3kit db: `docker exec -it WEB_CONTAINER_NAME /var/www/html/vendor/t3kit/db/restoredb.sh`
+* Pack (save) t3kit db: `docker exec -it WEB_CONTAINER_NAME /var/www/html/vendor/t3kit/db/packdb.sh`
 
 ### Verify the installation:
 
