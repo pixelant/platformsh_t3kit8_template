@@ -13,17 +13,18 @@ You can also use this branch if you need to test and prepare any extension for T
 Frontend currently throws an error if you aren't logged into BE.
 see: https://forge.typo3.org/issues/85310
 
-To get this setup to run on first install:
-`composer install`
+To get this setup to run:
 
-Setup t3kit database (still for version 8):
-`composer helper:setupdb`
-
-Run `composer helper:postcomposer`
+ - `git clone -b t3kit9test git@github.com:t3kit/t3kit.git t3kit9test`
+ - `cd t3kit9test`
+ - `cp .env.example .env` (`cp .env.mac.example .env`)
+ - `docker-compose up -d`
+ - `composer install`
+ - `composer helper:restoredb`
 
 Since Themes extension isn't included now, we need to do some manual configurations to make frontend render.
 
-Login to BE do following steps:
+The restoredb script also perform following steps:
 
  - Edit root template [1] and include static "Theme - t3kit (theme_t3kit)"
  - Edit root page [1] and:
