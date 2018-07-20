@@ -76,15 +76,14 @@
     "guzzlehttp/guzzle": "~6.3.0"
   },
   "scripts":{
-    "helper:setupdb": "scripts/setupdb.sh",
-    "helper:postcomposer": "scripts/post-composer-install.sh",
+    "helper:restoredb": "scripts/restoredb.sh",
+    "helper:t3fixes": "scripts/t3fixes.sh",
     "typo3-cms-scripts": [
 			"typo3cms install:fixfolderstructure",
 			"typo3cms install:generatepackagestates"
 		],
     "post-autoload-dump": [
-      "@typo3-cms-scripts",
-      "@helper:postcomposer"
+      "@helper:t3fixes"
     ]
   },
   "extra": {

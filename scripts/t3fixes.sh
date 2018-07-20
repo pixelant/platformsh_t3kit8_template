@@ -17,10 +17,11 @@ fi
 #echo "WEB_CONTAINER_NAME = $WEB_CONTAINER_NAME"
 
 echo -e "\nRunning script in container:"
-echo "docker exec -i "$WEB_CONTAINER_NAME" /var/www/html/vendor/t3kit/db/setupdb.sh"
+echo "docker exec -i -u www-data "$WEB_CONTAINER_NAME" /var/www/html/vendor/helhum/typo3-console/typo3cms install:fixfolderstructure"
 echo -e "\n"
-docker exec -i "$WEB_CONTAINER_NAME" /var/www/html/vendor/t3kit/db/setupdb.sh
+docker exec -i -u www-data "$WEB_CONTAINER_NAME" /var/www/html/vendor/helhum/typo3-console/typo3cms install:fixfolderstructure
 
-#* Setup t3kit db: `docker exec -it web /var/www/html/vendor/t3kit/db/setupdb.sh`
-#* Restore t3kit db: `docker exec -it web /var/www/html/vendor/t3kit/db/restoredb.sh`
-#* Pack (save) t3kit db: `docker exec -it web /var/www/html/vendor/t3kit/db/packdb.sh`
+echo -e "\nRunning script in container:"
+echo "docker exec -i -u www-data "$WEB_CONTAINER_NAME" /var/www/html/vendor/helhum/typo3-console/typo3cms install:generatepackagestates"
+echo -e "\n"
+docker exec -i -u www-data "$WEB_CONTAINER_NAME" /var/www/html/vendor/helhum/typo3-console/typo3cms install:generatepackagestates
