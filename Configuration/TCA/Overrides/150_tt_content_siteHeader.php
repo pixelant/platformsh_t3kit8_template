@@ -43,6 +43,8 @@ $GLOBALS['TCA']['tt_content']['types']['siteHeader'] = [
             --palette--;;headerMiddle,
             --palette--;;mainNavigation,
             --palette--;;accessibility,
+        --div--;LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.tabs.logo,image,
+            --palette--;;imageSize,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
             --palette--;;frames,
             --palette--;;appearanceLinks,
@@ -84,21 +86,31 @@ $GLOBALS['TCA']['tt_content']['palettes']['headerTop'] = array(
         headerTopLangMenu, --linebreak--,
         headerTopSearch,
         ',
-    );
+);
 
 $GLOBALS['TCA']['tt_content']['palettes']['headerMiddle'] = array(
     'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.palette.headerMiddle',
     'showitem' => '
         headerMiddle, --linebreak--,
-',
+    ',
 );
 
 $GLOBALS['TCA']['tt_content']['palettes']['mainNavigation'] = array(
     'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.palette.mainNavigation',
     'showitem' => '
-        --linebreak--,
+        mainNavigation, --linebreak--,
+        nav_height, --linebreak--,
+        nav_type, nav_dropdownColumns, nav_dropdownLevel, --linebreak--,
+        nav_position, --linebreak--,
+        nav_logo, nav_langMenu, --linebreak--,
     ',
   );
+
+  $GLOBALS['TCA']['tt_content']['palettes']['imageSize'] = array(
+    'showitem' => '
+        logo_width, --linebreak--,
+',
+);
 
 
 /*
@@ -131,6 +143,27 @@ $GLOBALS['TCA']['tt_content']['palettes']['mainNavigation'] = array(
     'headerMiddle' => [
         'exclude' => true,
         'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.showHeaderMiddle',
+        'onChange' => 'reload',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxLabeledToggle',
+            'items' => [
+                [
+                   0 => '',
+                   1 => '',
+                   'labelChecked' => 'Enabled',
+                   'labelUnchecked' => 'Disabled',
+                ]
+            ],
+            'default' => 0,
+        ]
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'mainNavigation' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation',
         'onChange' => 'reload',
         'config' => [
             'type' => 'check',
@@ -371,6 +404,80 @@ $GLOBALS['TCA']['tt_content']['palettes']['mainNavigation'] = array(
 ]);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'nav_height' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.navHeight',
+        'displayCond' => 'FIELD:mainNavigation:!=:0',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'max' => 255,
+            'eval' => 'trim',
+            'default' => 0,
+        ]
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'nav_type' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.type',
+        'displayCond' => 'FIELD:mainNavigation:!=:0',
+        'onChange' => 'reload',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectSingle',
+            'items' => [
+                ['LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.type.dropdown', '0'],
+                ['LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.type.simple', '1'],
+            ],
+            'default' => 0,
+        ],
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'nav_logo' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.enableLogo',
+        'displayCond' => 'FIELD:mainNavigation:!=:0',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ]
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'nav_langMenu' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.enableLangMenu',
+        'displayCond' => 'FIELD:mainNavigation:!=:0',
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ]
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'nav_position' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.navbarPos',
+        'displayCond' => 'FIELD:mainNavigation:!=:0',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectSingle',
+            'items' => [
+                ['LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.nav_position.default', ''],
+                ['LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.nav_position.right', '_right-pos'],
+            ],
+            'default' => '',
+        ],
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
     'skipLinks_mainNavigation' => [
         'exclude' => true,
         'label' =>
@@ -385,10 +492,64 @@ $GLOBALS['TCA']['tt_content']['palettes']['mainNavigation'] = array(
 ]);
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'nav_dropdownLevel' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.dropdownLevel',
+        'displayCond' => array(
+            'AND' => array(
+                    'FIELD:mainNavigation:!=:0',
+                    'FIELD:nav_type:!=:1',
+            )
+        ),
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectSingle',
+            'items' => [
+                ['LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.dropdownLevel.two', '2'],
+                ['LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.dropdownLevel.three', '3'],
+                ['LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.dropdownLevel.four', '4'],
+            ],
+            'default' => 0,
+        ],
+    ],
+]);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'nav_dropdownColumns' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.mainNavigation.dropdownColumns',
+        'displayCond' => array(
+            'AND' => array(
+                    'FIELD:mainNavigation:!=:0',
+                    'FIELD:nav_type:!=:1',
+            )
+        ),
+        'config' => [
+            'type' => 'check',
+            'renderType' => 'checkboxToggle',
+        ]
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
     'skipLinks_mainContent' => [
         'exclude' => true,
         'label' =>
         'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.skipLinks_mainContent',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'max' => 255,
+            'eval' => 'trim',
+        ]
+    ],
+]);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
+    'logo_width' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:t3kit/Resources/Private/Language/locallang_BE_CE_special.xlf:siteHeader.imageWidth',
         'config' => [
             'type' => 'input',
             'size' => 50,

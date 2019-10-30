@@ -19,6 +19,9 @@
 			<trans-unit id="siteHeader.tabs.settings">
 				<source>Site Header Settings </source>
 			</trans-unit>
+			<trans-unit id="siteHeader.tabs.logo">
+				<source>Site Header Logo</source>
+			</trans-unit>
 
 			<trans-unit id="siteHeader.palette.headerTop">
 				<source>Site Header Top</source>
@@ -87,7 +90,58 @@
 
 
 			<!-- Main Navigation -->
-
+			<trans-unit id="siteHeader.mainNavigation">
+				<source>Show Site Main Mavigation section</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.navHeight">
+				<source>Navigation Height (px)</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.type">
+				<source>Main Menu type</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.type.simple">
+				<source>Simple</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.type.dropdown">
+				<source>Dropdown</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.dropdownColumns">
+				<source>Main Menu Dropdown as Columns</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.dropdownLevel">
+				<source>Deeps of navigation</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.dropdownLevel.two">
+				<source>2 levels</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.dropdownLevel.three">
+				<source>3 levels</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.dropdownLevel.four">
+				<source>4 levels</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.enableLogo">
+				<source>Enable Logo in navigation menu</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.enableLangMenu">
+				<source>Enable Language Menu in navigation menu</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.navbarPos">
+				<source>Alignment of navbar items</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.nav_position.default">
+				<source>Default (left)</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.nav_position.right">
+				<source>Right</source>
+			</trans-unit>
+			<!-- not used Main Navigation -->
+			<!-- <trans-unit id="siteHeader.mainNavigation.mobileNavToggleBtn">
+				<source>Mobile Navigation Toggle Btn Position</source>
+			</trans-unit>
+			<trans-unit id="siteHeader.mainNavigation.excludeUidList">
+				<source>Exclude uid list (12,13,...)</source>
+			</trans-unit> -->
 
 
 			<!-- Accessibility -->
@@ -96,6 +150,11 @@
 			</trans-unit>
 			<trans-unit id="siteHeader.skipLinks_mainContent">
 				<source>Skip to main content text</source>
+			</trans-unit>
+
+			<!-- Logo Adjustments -->
+			<trans-unit id="siteHeader.imageWidth">
+				<source>Width of logo (px)</source>
 			</trans-unit>
 
 		</body>
