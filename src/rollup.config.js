@@ -1,65 +1,57 @@
-import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
+
+import resolve from '@rollup/plugin-node-resolve'
+// import babel from 'rollup-plugin-babel'
+// import commonjs from 'rollup-plugin-commonjs'
+import inject from '@rollup/plugin-inject';
 
 export default [
-    {
-        input: 'dev/js/jquery.js',
-        output: {
-            file: '../Resources/Public/JavaScript/jquery.js',
-            format: 'iife',
-            name: 'jquery',
-            globals: {
-                window: 'window',
-            },
-        },
-        plugins: [
-            resolve()
-        ]
-    },
-    {
-        input: 'dev/js/bootstrap.js',
-        output: {
-            file: '../Resources/Public/JavaScript/bootstrap.js',
-            format: 'umd',
-            name: 'bootstrap',
-            globals: {
-                jquery: '$'
-            },
-        },
-        external: ['jquery'],
-        plugins: [
-            babel({
-                exclude: 'node_modules/**',
-                externalHelpersWhitelist: [ // Include only required helpers
-                  'defineProperties',
-                  'createClass',
-                  'inheritsLoose',
-                  'defineProperty',
-                  'objectSpread'
-                ]
-            }),
-            resolve()
-        ]
-    },
-    {
-        input: 'dev/js/main.js',
-        output: {
-            file: '../Resources/Public/JavaScript/main.js',
-            format: 'iife',
-            name: 'main'
-        },
-        plugins: [
-            babel({
-                exclude: 'node_modules/**',
-                externalHelpersWhitelist: [ // Include only required helpers
-                  'defineProperties',
-                  'createClass',
-                  'inheritsLoose',
-                  'defineProperty',
-                  'objectSpread'
-                ]
-            }),
-            resolve(),
-        ]
-    }
+  // {
+  //   input: 'index.js',
+  //   output: [
+  //     {
+  //       file: 'dist/bundle.js',
+  //       format: 'iife',
+  //       globals: {
+  //         jquery: 'jQuery',
+  //         'popper.js': 'Popper'
+  //       }
+  //     }
+  //   ],
+  //   external: ['jquery', 'popper.js'],
+  //   // external: ['popper.js'],
+  //   plugins: [
+  //   //   inject({
+  //   //     $: 'jquery'
+  //   //   }),
+  //   //   resolve()
+  //   ]
+  // },
+
+  // import jquery.slim
+  {
+    input: 'jquery.js',
+    output: [
+      {
+        file: 'output/jquery.js',
+        format: 'iife'
+      }
+    ],
+    context: 'window'
+  },
+
+  // import bootstrap components
+  {
+    input: 'bootstrap.js',
+    output: [
+      {
+        file: 'dist/bootstrap.js',
+        format: 'iife',
+        globals: {
+          jquery: 'jQuery',
+          'popper.js': 'Popper'
+        }
+      }
+    ],
+    external: ['jquery', 'popper.js']
+  }
 ]

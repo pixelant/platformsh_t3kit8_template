@@ -35,9 +35,9 @@
     "last 2 versions"
   ],
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
-    "the-answer": "^1.0.0"
+    "bootstrap": "4.4.1",
+    "jquery": "3.4.1",
+    "popper.js": "1.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

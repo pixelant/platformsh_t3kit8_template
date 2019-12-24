@@ -13,12 +13,10 @@
     "css-main": "npm-run-all css-lint css-compile css-prefix css-minify",
     "css-minify": "cleancss --level=1 --source-map --source-map-inline-sources --output ../Resources/Public/CSS/bootstrap.css ../Resources/Public/CSS/bootstrap.css && cleancss --level=1 --source-map --source-map-inline-sources --output ../Resources/Public/CSS/main.css ../Resources/Public/CSS/main.css",
     "css-prefix": "postcss ../Resources/Public/CSS/bootstrap.css --use=autoprefixer --map=false --output=../Resources/Public/CSS/bootstrap.css && postcss ../Resources/Public/CSS/main.css --use=autoprefixer --map=false --output=../Resources/Public/CSS/main.css",
-    "js-compile": "rollup --environment BUNDLE:false --config rollup.config.js --sourcemap",
     "js-lint": "standard \"dev/js/main/**/*.js\"",
     "js-lint-fix": "standard --fix \"dev/js/main/**/*.js\"",
     "js-minify": "npm-run-all --parallel js-minify-bundle",
     "js-minify-bundle": "terser --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content='../Resources/Public/JavaScript/bootstrap.js.map',includeSources,url=bootstrap.min.js.map\" --output ../Resources/Public/JavaScript/bootstrap.min.js ../Resources/Public/JavaScript/bootstrap.js",
-    "js-main": "npm-run-all js-lint js-compile js-minify",
     "watch": "npm-run-all -p watch-*",
     "serve": "npm-run-all -p sync watch",
     "sync": "browser-sync start --config bs-config.js",
@@ -28,16 +26,17 @@
     "dev-js-compile": "rollup --config rollup.config.js",
     "watch-css": "nodemon --watch dev/styles/ --ext scss --exec  \"npm run dev-css-main\"",
     "watch-js": "nodemon --watch dev/js/ --ext js --exec \"npm run dev-js-main\"",
-    "done": "rollup --config",
-    "done2": "browser-sync start --server 'output'"
+
+    "js-compile": "rollup --config build/rollup.config.js",
+    "js-main": "npm-run-all js-lint js-compile js-minify-main"
   },
   "browserslist": [
     "last 2 versions"
   ],
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
-    "the-answer": "^1.0.0"
+    "bootstrap": "4.4.1",
+    "jquery": "3.4.1",
+    "popper.js": "1.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
