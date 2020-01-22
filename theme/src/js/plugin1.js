@@ -2,4 +2,4 @@
 
 import '../../node_modules/bootstrap/js/src/dropdown'
 
-// console.log('fff')
+console.log('fff')

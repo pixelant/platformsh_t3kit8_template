@@ -1,0 +1,4 @@
+js:
+  additional_page_entry:
+    - plugin1
+    - plugin2
