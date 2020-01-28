@@ -3,5 +3,6 @@ import { TEST } from '../222'
 
 console.log(TEST)
 console.log('sffsffs')
+console.log('sffsffs')
 
-$('.alert').alert()
+// $('.alert').alert()

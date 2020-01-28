@@ -2616,6 +2616,7 @@
   Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
   Popper.placements = placements;
   Popper.Defaults = Defaults;
+  //# sourceMappingURL=popper.js.map
 
   /**
    * --------------------------------------------------------------------------

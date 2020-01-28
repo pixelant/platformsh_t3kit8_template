@@ -3351,9 +3351,5 @@
     return Dropdown._jQueryInterface
   };
 
-  // import Popper from '../../node_modules/popper.js/dist/popper.js'
-
-  console.log('fff');
-
 }(jQuery));
-//# sourceMappingURL=plugin1.js.map
+//# sourceMappingURL=plugin2.js.map

@@ -29,6 +29,9 @@ export default [
       globals: {
         jquery: 'jQuery'
       }
+    },
+    watch: {
+      clearScreen: false
     }
   },
   {

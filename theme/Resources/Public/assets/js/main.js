@@ -7,9 +7,8 @@
 
 	console.log(TEST);
 	console.log('sffsffs');
-	console.log('sffsffs');
 
-	// $('.alert').alert()
+	$('.alert').alert();
 
 	// import '../../../../node_modules/bootstrap/js/src/dropdown'
 

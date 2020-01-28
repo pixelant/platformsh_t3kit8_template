@@ -1,5 +1,7 @@
 const conf = module.exports = {}
 
+conf.proxy = 'http://t3kit10.t3.localhost'
+
 conf.DIST = 'dist/'
 conf.SRC = 'src/'
 conf.JS_DIST = `${conf.DIST}js/`
