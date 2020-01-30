@@ -1,23 +1,9 @@
 const fs = require('fs')
 const fsPromises = fs.promises
-// const replace = require('replace-in-file')
 const conf = require('./conf')
 
-// const jsSrc = '<script src="{f:uri.resource(path:"js/%_file_%", extensionName: "{site.identifier}")}"></script>'
-
-// async function replaceFileNameInTemplate (tmpl, oldFileName, newFileName) {
-//   const options = {
-//     files: tmpl,
-//     from: oldFileName,
-//     to: newFileName
-//   }
-//   try {
-//     console.log(options)
-//     await replace(options)
-//   } catch (error) {
-//     console.error('Error occurred:', error)
-//   }
-// }
+const jsDist = `${conf.DEV}${conf.JS_DIST}`
+const cssDist = `${conf.DEV}${conf.CSS_DIST}`
 
 async function getFileList (dir) {
   let files
@@ -28,29 +14,31 @@ async function getFileList (dir) {
   }
 
   if (files !== undefined) {
-    files = files.filter(item => !item.includes('map'))
+    files = files.filter(item => {
+      return !(item.includes('map') || item.includes('br') || item.includes('gz'))
+    })
     return files
   }
 }
 
 async function addJsTemplate () {
   try {
-    const files = await getFileList(conf.JS_DIST)
+    const files = await getFileList(jsDist)
     let mainJs = ''
     let plugin1 = ''
     let plugin2 = ''
     files.forEach(async (fileName) => {
       if (fileName.includes('jquery') || fileName.includes('main')) {
-        console.log('TCL: addFileRevToTemplate -> fileName', fileName)
+        // console.log('TCL: addFileRevToTemplate -> fileName', fileName)
         mainJs += conf.JS_LINK.replace('%_file_%', fileName) + '\n'
-        console.log('TCL: addFileRevToTemplate -> str', mainJs)
-        await fsPromises.writeFile(`${conf.JS_DIST}main.html`, mainJs)
+        // console.log('TCL: addFileRevToTemplate -> str', mainJs)
+        await fsPromises.writeFile(`${jsDist}main.html`, mainJs)
       } else if ((fileName.includes('plugin1'))) {
         plugin1 = conf.JS_LINK.replace('%_file_%', fileName)
-        await fsPromises.writeFile(`${conf.JS_DIST}plugin1.html`, plugin1)
+        await fsPromises.writeFile(`${jsDist}plugin1.html`, plugin1)
       } else {
         plugin2 = conf.JS_LINK.replace('%_file_%', fileName)
-        await fsPromises.writeFile(`${conf.JS_DIST}plugin2.html`, plugin2)
+        await fsPromises.writeFile(`${jsDist}plugin2.html`, plugin2)
       }
     })
   } catch (error) {

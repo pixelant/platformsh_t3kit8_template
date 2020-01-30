@@ -1,4 +1,4 @@
 composer.lock
 build
 node_modules
-theme/dist/
+dist

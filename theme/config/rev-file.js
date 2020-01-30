@@ -3,6 +3,9 @@ const fs = require('fs')
 const fsPromises = fs.promises
 const hasha = require('hasha')
 
+const jsDist = `${conf.PROD}${conf.JS_DIST}`
+const cssDist = `${conf.PROD}${conf.CSS_DIST}`
+
 async function getFileList (dir) {
   let files
   try {
@@ -26,7 +29,7 @@ function insertValue (string, value) {
 
 async function hashJs (val) {
   try {
-    return (await hasha.fromFile(conf.JS_DIST + val, { algorithm: 'md5' })).slice(0, 10)
+    return (await hasha.fromFile(`${jsDist}${val}`, { algorithm: 'md5' })).slice(0, 10)
   } catch (err) {
     console.error('error', err)
   }
@@ -34,9 +37,9 @@ async function hashJs (val) {
 
 async function revFileJs () {
   try {
-    const files = await getFileList(conf.JS_DIST)
+    const files = await getFileList(jsDist)
     files.forEach(async (element) => {
-      fsPromises.rename(conf.JS_DIST + element, conf.JS_DIST + insertValue(element, await hashJs(element)))
+      fsPromises.rename(`${jsDist}${element}`, jsDist + insertValue(element, await hashJs(element)))
     })
   } catch (error) {
     console.error('Error occurred:', error)

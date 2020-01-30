@@ -1,0 +1,9 @@
+
+// @import 'variables3';
+// @use 'ttt' as *;
+@use 'variables3' as *;
+// @forward 'variables3';
+
+body {
+  background-color: $blue;
+}

@@ -7,7 +7,7 @@ bs.init({
   ui: false,
   proxy: 'http://t3kit10.t3.localhost',
   files: ['dist'],
-  serveStatic: ['dist'],
+  serveStatic: ['dist/development'],
   port: 9001,
   ghostMode: false,
   open: false,

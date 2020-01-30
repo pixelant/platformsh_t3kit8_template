@@ -2,6 +2,8 @@
 import resolve from '@rollup/plugin-node-resolve'
 const conf = require('./conf')
 
+const DIR = conf.DEV
+
 export default [
   {
     input: `${conf.JS_SRC}jquery.js`,
@@ -10,7 +12,7 @@ export default [
     ],
     output: [
       {
-        file: `${conf.JS_DIST}jquery.js`,
+        file: `${DIR}${conf.JS_DIST}jquery.js`,
         format: 'iife'
       }
     ],
@@ -23,7 +25,7 @@ export default [
       resolve()
     ],
     output: {
-      file: `${conf.JS_DIST}main.js`,
+      file: `${DIR}${conf.JS_DIST}main.js`,
       format: 'iife',
       sourcemap: true,
       globals: {
@@ -41,7 +43,7 @@ export default [
       resolve()
     ],
     output: {
-      file: `${conf.JS_DIST}plugin1.js`,
+      file: `${DIR}${conf.JS_DIST}plugin1.js`,
       format: 'iife',
       sourcemap: true,
       globals: {
@@ -56,7 +58,7 @@ export default [
       resolve()
     ],
     output: {
-      file: `${conf.JS_DIST}plugin2.js`,
+      file: `${DIR}${conf.JS_DIST}plugin2.js`,
       format: 'iife',
       sourcemap: true,
       globals: {

@@ -1,0 +1,14 @@
+
+// @import 'variables3';
+
+
+@forward 'ttt' with (
+  $blue: green !default);
+
+// @forward 'qqq';
+
+// @use 'qqq';
+@use 'rrr';
+@use 'rrr2';
+
+

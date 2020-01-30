@@ -1,0 +1,9 @@
+// @forward "variables2" with (
+  //   $blue: green !default
+  // );
+// @forward '../variables';
+@forward '../variables2' with (
+  $blue: white
+);
+@use 'test';
+

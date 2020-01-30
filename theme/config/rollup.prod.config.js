@@ -3,6 +3,8 @@ import resolve from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 const conf = require('./conf')
 
+const DIR = conf.PROD
+
 export default [
   {
     input: `${conf.JS_SRC}jquery.js`,
@@ -16,7 +18,7 @@ export default [
     ],
     output: [
       {
-        file: `${conf.JS_DIST}jquery.js`,
+        file: `${DIR}${conf.JS_DIST}jquery.js`,
         format: 'iife'
       }
     ],
@@ -34,7 +36,7 @@ export default [
       })
     ],
     output: {
-      file: `${conf.JS_DIST}main.js`,
+      file: `${DIR}${conf.JS_DIST}main.js`,
       format: 'iife',
       sourcemap: 'hidden',
       globals: {
@@ -54,7 +56,7 @@ export default [
       })
     ],
     output: {
-      file: `${conf.JS_DIST}plugin1.js`,
+      file: `${DIR}${conf.JS_DIST}plugin1.js`,
       format: 'iife',
       sourcemap: 'hidden',
       globals: {
@@ -74,7 +76,7 @@ export default [
       })
     ],
     output: {
-      file: `${conf.JS_DIST}plugin2.js`,
+      file: `${DIR}${conf.JS_DIST}plugin2.js`,
       format: 'iife',
       sourcemap: 'hidden',
       globals: {

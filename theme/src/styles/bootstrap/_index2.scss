@@ -1,0 +1,46 @@
+// Import project variables on top of Bootstrap to override default theme
+// @forward '../variables';
+
+// Bootstrap mixins
+@forward "../../../node_modules/bootstrap/scss/mixins";
+// Bootstrap root
+@forward "../../../node_modules/bootstrap/scss/root";
+// Bootstrap reboot
+@forward "../../../node_modules/bootstrap/scss/reboot";
+// Bootstrap Content
+@forward "../../../node_modules/bootstrap/scss/type";
+@forward "../../../node_modules/bootstrap/scss/images";
+@forward "../../../node_modules/bootstrap/scss/code";
+@forward "../../../node_modules/bootstrap/scss/tables";
+// Bootstrap Grid
+@forward "../../../node_modules/bootstrap/scss/grid";
+// Bootstrap Components
+// @forward "../../../node_modules/bootstrap/scss/alert";
+// @forward "../../../node_modules/bootstrap/scss/close";
+// @forward "../../../node_modules/bootstrap/scss/badge";
+// @forward "../../../node_modules/bootstrap/scss/breadcrumb";
+@forward "../../../node_modules/bootstrap/scss/buttons";
+// @forward "../../../node_modules/bootstrap/scss/button-group";
+@forward "../../../node_modules/bootstrap/scss/card";
+// @forward "../../../node_modules/bootstrap/scss/carousel";
+// @forward "../../../node_modules/bootstrap/scss/dropdown";
+// @forward "../../../node_modules/bootstrap/scss/forms";
+// @forward "../../../node_modules/bootstrap/scss/custom-forms";
+// @forward "../../../node_modules/bootstrap/scss/input-group";
+// @forward "../../../node_modules/bootstrap/scss/jumbotron";
+@forward "../../../node_modules/bootstrap/scss/list-group";
+// @forward "../../../node_modules/bootstrap/scss/media";
+// @forward "../../../node_modules/bootstrap/scss/modal";
+@forward "../../../node_modules/bootstrap/scss/nav";
+// @forward "../../../node_modules/bootstrap/scss/navbar";
+@forward "../../../node_modules/bootstrap/scss/pagination";
+// @forward "../../../node_modules/bootstrap/scss/popover";
+// @forward "../../../node_modules/bootstrap/scss/progress";
+// @forward "../../../node_modules/bootstrap/scss/spinners";
+// @forward "../../../node_modules/bootstrap/scss/toasts";
+// @forward "../../../node_modules/bootstrap/scss/tooltip";
+@forward "../../../node_modules/bootstrap/scss/transitions";
+// Bootstrap Utilities
+@forward "../../../node_modules/bootstrap/scss/utilities";
+// Bootstrap print styles
+@forward "../../../node_modules/bootstrap/scss/print";
