@@ -2,7 +2,7 @@ const fs = require('fs')
 const fsPromises = fs.promises
 const conf = require('./conf')
 
-const cssDist = `${conf.DEV}${conf.CSS_DIST}`
+const cssDist = `${conf.PROD}${conf.CSS_DIST}`
 
 async function getFileList (dir) {
   let files

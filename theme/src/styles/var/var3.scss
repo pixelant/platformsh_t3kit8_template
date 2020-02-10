@@ -1,5 +1,0 @@
-// @forward 'var1';
-// @use 'var2' as v;
-$color4: green;
-
-@forward 'var1' with ($color3: $color4 !default);

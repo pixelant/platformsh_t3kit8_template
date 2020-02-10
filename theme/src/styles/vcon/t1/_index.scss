@@ -1,8 +1,0 @@
-// @use '../../var/var1' as v;
-// @use '../../var/var2' as v2;
-@use '../../variables' as v;
-body {
-  color: v.$purple;
-  background-color: v.$indigo;
-
-}

@@ -1,13 +1,2 @@
-// // @use "../../../node_modules/bootstrap/scss/functions" as *;
-// @forward "../../../node_modules/bootstrap/scss/functions";
-// @use '../../../node_modules/bootstrap/scss/variables' with ($link-color: $primary !default );
-
-// @forward "../../../node_modules/bootstrap/scss/variables";
-// // @function theme-color($key: "primary") {
-// //   @return map-get($theme-colors, $key);
-// // }
-// // @forward "../../../node_modules/bootstrap/scss/variables";
-
-
 @import "../../../node_modules/bootstrap/scss/functions";
 @import "../../../node_modules/bootstrap/scss/variables";
