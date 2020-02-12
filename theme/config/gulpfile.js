@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
   exports.build = series(
     clean,
     parallel(compileCss, compileJs),
-    parallel(addJsTemplate, addCssTemplate),
+    parallel(addJsTemplate, addCssTemplate)
   )
 }
 

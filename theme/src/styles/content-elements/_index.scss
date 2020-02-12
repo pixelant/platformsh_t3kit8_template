@@ -1,9 +1,9 @@
-// @forward "variables2" with (
-  //   $blue: green !default
-  // );
-// @forward '../variables';
+/* stylelint-disable */
 @forward '../variables2' with (
   $blue: white
-);
-@use 'test';
+  );
+/* stylelint-enable */
 
+/* stylelint-disable */
+@use '../variables2';
+/* stylelint-enable */
