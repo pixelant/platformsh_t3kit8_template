@@ -7,10 +7,12 @@ const { clean } = require('./gulp/clean')
 const { compileJs, compileMainJs } = require('./gulp/rollup')
 const { asyncAwaitTask } = require('./gulp/taskz')
 const { revJs } = require('./gulp/rev')
+const { addJsTemplate, addCssTemplate } = require('./tmpl')
 
 
 // exports.compress = compress
 exports.clean = clean
+exports.addJsTemplate = addJsTemplate
 exports.revJs = revJs
 exports.compileJs = compileJs
 // exports.default = compileJs
@@ -32,11 +34,15 @@ if (process.env.NODE_ENV === 'production') {
     clean,
     parallel(scssToCss, compileJs),
     revJs,
+    addJsTemplate,
+    addCssTemplate,
     parallel(compressCss, compressJs)
   )
 } else {
   exports.build = series(
     clean,
-    parallel(scssToCss, compileJs)
+    parallel(scssToCss, compileJs),
+    addJsTemplate,
+    addCssTemplate
   )
 }
