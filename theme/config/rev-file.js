@@ -46,16 +46,5 @@ async function revFileJs () {
   }
 }
 
-// async function revFileCss () {
-//   try {
-//     const files = await getFileList(conf.CSS_DIST)
-//     files.forEach(async (element) => {
-//       fsPromises.rename(DIR + element, DIR + insertValue(element, await hash(element)))
-//     })
-//   } catch (error) {
-//     console.error('Error occurred:', error)
-//   }
-// }
-
 revFileJs()
-// revFileCss()
+
