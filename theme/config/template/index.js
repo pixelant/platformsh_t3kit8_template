@@ -10,7 +10,7 @@ async function getFileList (dir) {
   try {
     files = await fsPromises.readdir(dir)
   } catch (err) {
-    console.error('error', err)
+    console.error('(getFileList) Error:', error)
   }
 
   if (files !== undefined) {
@@ -41,7 +41,8 @@ async function addJsTemplate () {
       }
     })
   } catch (error) {
-    console.error('Error occurred:', error)
+    console.error('(addJsTemplate) Error:', error)
+
   }
 }
 
@@ -65,7 +66,7 @@ async function addCssTemplate () {
       }
     })
   } catch (error) {
-    console.error('Error occurred:', error)
+    console.error('(addCssTemplate) Error:', error)
   }
 }
 

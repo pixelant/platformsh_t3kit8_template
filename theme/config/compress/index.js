@@ -1,15 +1,11 @@
 const { dest, src, parallel, series } = require('gulp')
 const size = require('gulp-size')
 const gulpBrotli = require('gulp-brotli')
-var gulpGzip = require('gulp-gzip')
-const conf = require('../../conf2')
+const gulpGzip = require('gulp-gzip')
+const vars = require('../vars')
 
-// const output = process.env.NODE_ENV === 'production' ? 'output/prod' : 'output/dev'
-
-// const CSS_SRC = conf.CSS_SRC
-// const JS_SRC = conf.CSS_SRC
-const CSS_DIST = `${conf.DIST}${conf.CSS_DIST}`
-const JS_DIST = `${conf.DIST}${conf.JS_DIST}`
+const CSS_DIST = `${vars.DIST}${vars.CSS_DIST}`
+const JS_DIST = `${vars.DIST}${vars.JS_DIST}`
 
 // compress with brotli
 function brotliCss () {
@@ -41,7 +37,3 @@ function gzipJs () {
 
 exports.compressCss = parallel(brotliCss, gzipCss)
 exports.compressJs = series(brotliJs, gzipJs)
-// exports.brotliCss = brotliCss
-// exports.gzipCss = gzipCss
-// exports.brotliJs = brotliJs
-// exports.gzipJs = gzipJs

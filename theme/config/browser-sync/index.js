@@ -1,12 +1,7 @@
 const bs = require('browser-sync').create()
-const conf = require('../conf')
+const vars = require('../vars')
 
-const DIST = `${conf.DIST}`
-
-function reload (cb) {
-  bs.reload()
-  cb()
-}
+const DIST = `${vars.DIST}`
 
 function serve (cb) {
   bs.init({

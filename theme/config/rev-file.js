@@ -4,7 +4,6 @@ const fsPromises = fs.promises
 const hasha = require('hasha')
 
 const jsDist = `${conf.PROD}${conf.JS_DIST}`
-const cssDist = `${conf.PROD}${conf.CSS_DIST}`
 
 async function getFileList (dir) {
   let files
@@ -47,4 +46,3 @@ async function revFileJs () {
 }
 
 revFileJs()
-

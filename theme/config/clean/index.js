@@ -1,12 +1,11 @@
 const del = require('del')
-const conf = require('../../conf2')
+const vars = require('../vars')
 
 async function clean () {
   try {
-    const deletedDirectoryPaths = await del([`${conf.DIST}*`], { force: true })
-    console.log('Deleted directories:\n', deletedDirectoryPaths.join('\n'))
+    await del([`${vars.DIST}*`], { force: true })
   } catch (error) {
-    console.error('Error occurred:', error)
+    console.error('(clean) Error:', error)
   }
 }
 

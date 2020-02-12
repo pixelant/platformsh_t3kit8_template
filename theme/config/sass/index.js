@@ -1,20 +1,18 @@
 const { watch, dest, src } = require('gulp')
-var sass = require('gulp-sass')
-var Fiber = require('fibers')
-var sourcemaps = require('gulp-sourcemaps')
-var postcss = require('gulp-postcss')
-var autoprefixer = require('autoprefixer')
-var cssnano = require('cssnano')
-var gulpif = require('gulp-if')
+const sass = require('gulp-sass')
+const Fiber = require('fibers')
+const sourcemaps = require('gulp-sourcemaps')
+const postcss = require('gulp-postcss')
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
+const gulpif = require('gulp-if')
 const rev = require('gulp-rev')
 const size = require('gulp-size')
-const conf = require('../../conf2')
+const vars = require('../vars')
 
 sass.compiler = require('sass')
-const SRC = conf.CSS_SRC
-const DIST = `${conf.DIST}${conf.CSS_DIST}`
-
-
+const SRC = vars.CSS_SRC
+const DIST = `${vars.DIST}${vars.CSS_DIST}`
 
 const postCssPlugins = [
   autoprefixer()
@@ -23,7 +21,7 @@ const postCssPlugins = [
 process.env.NODE_ENV === 'production' && postCssPlugins.push(cssnano({ preset: 'default' }))
 
 // compile scss to css
-function scssToCss () {
+function compileCss () {
   return src('main.scss', { cwd: `${SRC}` })
     .pipe(sourcemaps.init())
     .pipe(sass({ fiber: Fiber }).on('error', sass.logError))
@@ -35,9 +33,9 @@ function scssToCss () {
 }
 
 // gulp watch for scssToCss task
-function scssToCssWatch () {
-  watch(`${SRC}**/*.scss`, scssToCss)
+function compileCssWatch () {
+  watch(`${SRC}**/*.scss`, compileCss)
 }
 
-exports.scssToCss = scssToCss
-exports.scssToCssWatch = scssToCssWatch
+exports.compileCss = compileCss
+exports.compileCssWatch = compileCssWatch

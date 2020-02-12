@@ -3,10 +3,10 @@ const rollup = require('rollup')
 const { terser } = require('rollup-plugin-terser')
 const sizes = require('rollup-plugin-sizes')
 const resolve = require('@rollup/plugin-node-resolve')
-const conf = require('../../conf2')
+const vars = require('../vars')
 
-const SRC = conf.JS_SRC
-const DIST = `${conf.DIST}${conf.JS_DIST}`
+const SRC = vars.JS_SRC
+const DIST = `${vars.DIST}${vars.JS_DIST}`
 
 // compile jQuery
 const jQueryInputOptions = {
@@ -124,8 +124,4 @@ function compilePlugin2JsWatch () {
 }
 
 exports.compileJs = parallel(compilejQuery, compileMainJs, compilePlugin1, compilePlugin2)
-// exports.compileMainJsWatch = compileMainJsWatch
-// exports.compilePlugin1JsWatch = compilePlugin1JsWatch
-// exports.compilePlugin2JsWatch = compilePlugin2JsWatch
-
 exports.compileJsWatch = parallel(compileMainJsWatch, compilePlugin1JsWatch, compilePlugin2JsWatch)
