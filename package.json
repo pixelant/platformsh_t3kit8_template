@@ -1,7 +1,7 @@
 {
   "name": "t3kit",
-  "version": "9.0.0",
-  "description": "t3kit project. A TYPO3 website starterkit.",
+  "version": "10.0.0",
+  "description": "Base theme for t3kit project. A TYPO3 website starterkit.",
   "license": "GPL-2.0",
   "authors": "t3kit Community",
   "repository": "t3kit/t3kit",
@@ -16,10 +16,6 @@
     "build": "npm-run-all --parallel dev prod",
     "start": "gulp -f theme/config/gulpfile.js"
   },
-  "browserslist": [
-    "> 1.6% and last 2 versions",
-    "IOS >= 12 and > 0.5%"
-  ],
   "dependencies": {
     "bootstrap": "4.4.1",
     "jquery": "3.4.1",
@@ -58,9 +54,14 @@
     "stylelint-config-sass-guidelines": "^7.0.0"
   },
   "peerDependencies": {},
+  "browserslist": [
+    "> 1.6% and last 2 versions",
+    "IOS >= 12 and > 0.5%"
+  ],
   "standard": {
     "ignore": [
-      "dist/"
+      "dist/",
+      "Resources/Public/"
     ]
   },
   "stylelint": {
